@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_18_221059) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_18_224218) do
   create_table "departments", force: :cascade do |t|
     t.string "department_name"
     t.datetime "created_at", null: false
@@ -41,6 +41,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_18_221059) do
     t.binary "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "employee_id", null: false
+    t.index ["employee_id"], name: "index_tickets_on_employee_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,4 +59,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_18_221059) do
 
   add_foreign_key "employees", "departments"
   add_foreign_key "employees", "users"
+  add_foreign_key "tickets", "employees"
 end
