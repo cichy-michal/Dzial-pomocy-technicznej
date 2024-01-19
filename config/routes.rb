@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :tickets
   resources :employees
   resources :departments
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   #get 'home/index'
   root 'home#index'
   #root 'employees#index'
