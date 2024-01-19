@@ -1,11 +1,30 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: %i[ show edit update destroy ]
+  before_action :set_ticket, only: %i[ show edit update destroy]
   before_action :authenticate_user!
+  before_action :set_current_employee
+  before_action :set_reporter, only: %i[ show edit update destroy]
 
   # GET /tickets or /tickets.json
   def index
     @tickets = Ticket.all
     @aktualny = current_user.employee if current_user.present?
+  end
+
+  def set_reporter
+      # Znajdź obiekt Employee na podstawie employee_id związanego z aktualnym Ticket
+      @reporter = Employee.find_by(id: @ticket.employee_id)
+      if @reporter
+        @first_name = @reporter&.first_name
+        @last_name = @reporter&.last_name
+      else
+        @first_name = nil
+        @last_name = nil
+      end
+  end
+
+  def set_current_employee
+    # Ustawia obiekt @employee na podstawie danych zalogowanego użytkownika
+    @employee = current_user.employee
   end
 
   # GET /tickets/1 or /tickets/1.json
@@ -65,8 +84,9 @@ class TicketsController < ApplicationController
       @ticket = Ticket.find(params[:id])
     end
 
+
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.require(:ticket).permit(:status, :description, :image)
+      params.require(:ticket).permit(:employee_id,:status, :description, :image)
     end
 end

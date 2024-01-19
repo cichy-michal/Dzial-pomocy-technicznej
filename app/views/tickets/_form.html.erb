@@ -12,11 +12,6 @@
   <% end %>
 
   <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.text_area :description %>
   </div>
@@ -27,6 +22,14 @@
   </div>
 
   <div>
+    <%= form.text_field :status, value: 'Nowy', type: :hidden %>
+  </div>
+
+  <div>
+    <%= form.number_field :employee_id, value:@employee.id, type: :hidden %>
+  </div>
+
+  <div> </br>
     <%= form.submit %>
   </div>
 <% end %>
