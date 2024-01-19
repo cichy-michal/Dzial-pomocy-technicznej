@@ -5,6 +5,7 @@ class TicketsController < ApplicationController
   # GET /tickets or /tickets.json
   def index
     @tickets = Ticket.all
+    @aktualny = current_user.employee if current_user.present?
   end
 
   # GET /tickets/1 or /tickets/1.json

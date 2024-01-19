@@ -3,11 +3,20 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :set_current_user_employee, only: [:edit, :update]
 
-  #def after_sign_up_path_for(resource)
-  #  # Dostosuj ścieżkę do przekierowania po udanej rejestracji
-  #  employees_new_path
-  #end
+  protected
+
+  def after_sign_up_path_for(resource)
+    '/employees/new'
+  end
+
+  private
+
+  def set_current_user_employee
+    @aktualny = current_user.employee if current_user.present?
+    session[:aktualny] = @aktualny
+  end
 
   # GET /resource/sign_up
   # def new
@@ -19,10 +28,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
+   #GET /resource/edit
+   #def edit
+   # super
+   #end
 
   # PUT /resource
   # def update
