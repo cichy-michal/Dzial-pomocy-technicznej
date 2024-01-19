@@ -11,8 +11,14 @@
     </div>
   <% end %>
 
+
   <div>
+    <% if defined? editing %>
+    <%= form.label :Dodaj_rozwiazanie, style: "display: block" %>
+    <% else %>
     <%= form.label :description, style: "display: block" %>
+    <% end %>
+
     <%= form.text_area :description %>
   </div>
 
