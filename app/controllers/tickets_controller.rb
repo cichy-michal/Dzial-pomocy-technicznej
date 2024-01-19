@@ -3,10 +3,14 @@ class TicketsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_current_employee
   before_action :set_reporter, only: %i[ show edit update destroy]
+  before_action :aktualny
 
   # GET /tickets or /tickets.json
   def index
     @tickets = Ticket.all
+  end
+
+  def aktualny
     @aktualny = current_user.employee if current_user.present?
   end
 

@@ -5,6 +5,20 @@
 <br>
 
 <div>
+
+  <%= form_for @ticket, url: edit_ticket_path(@ticket), method: :put do |f| %>
+  <%= f.hidden_field :status, value: 'Rozwiazywanie' %>
+  <%= f.button "Zmien status na rozwiazywanie", class: "btn btn-primary" %>
+  <% end %>
+
+</br>
+
+  <%= form_for @ticket, url: ticket_path(@ticket), method: :put do |f| %>
+  <%= f.hidden_field :status, value: 'Problem rozwiazany' %>
+  <%= f.submit "Oznacz jako rozwiązane", class: "btn btn-primary" %>
+  <% end %>
+
   <%= link_to "Show this ticket", @ticket %> |
   <%= link_to "Back to tickets", tickets_path %>
+
 </div>

@@ -2,7 +2,12 @@
 <%= render @ticket %>
 
 <div>
-  <%= link_to "Edit this ticket", edit_ticket_path(@ticket) %> |
+<% if can? :department_id_1, @aktualny %>
+
+  <%= link_to "Edit ticket", edit_ticket_path(@ticket) %>
+
+   |
+<% end %>
   <%= link_to "Back to tickets", tickets_path %>
 
   <%= button_to "Destroy this ticket", @ticket, method: :delete %>
