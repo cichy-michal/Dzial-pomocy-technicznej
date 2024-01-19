@@ -14,6 +14,7 @@ gem "sqlite3", "~> 1.4"
 gem 'devise', '~> 4.9', '>= 4.9.3'
 gem 'rails_db', '~> 2.4', '>= 2.4.2'
 gem 'rails-erd'
+gem 'cancancan', '~> 3.5'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
