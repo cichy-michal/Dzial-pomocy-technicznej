@@ -7,7 +7,7 @@
 
 <div>
 
-  <%= form_for @ticket, url: edit_ticket_path(@ticket), method: :put do |f| %>
+  <%= form_for @ticket, url: ticket_path(@ticket), method: :put do |f| %>
   <%= f.hidden_field :status, value: 'Rozwiazywanie' %>
   <%= f.button "Zmien status na rozwiazywanie", class: "btn btn-primary" %>
   <% end %>
@@ -16,6 +16,8 @@
 
   <%= form_for @ticket, url: ticket_path(@ticket), method: :put do |f| %>
   <%= f.hidden_field :status, value: 'Problem rozwiazany' %>
+  <%= f.hidden_field :employees_tickets_employee_id, value: nil %>
+  <%= f.hidden_field :employees_tickets_ticket_id, value: nil %>
   <%= f.submit "Oznacz jako rozwiązane", class: "btn btn-primary" %>
   <% end %>
 
