@@ -8,6 +8,7 @@ class TicketsController < ApplicationController
   # GET /tickets or /tickets.json
   def index
     @tickets = Ticket.all
+    @employees_tickets = EmployeesTicket.all
   end
 
   def aktualny

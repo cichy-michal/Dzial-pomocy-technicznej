@@ -3,13 +3,31 @@
 
 <div id="tickets">
   <% @tickets.each do |ticket| %>
-  <% if @employee.user == current_user && ticket.employee_id == @employee.id %>
+
+
+  <% if can? :department_id_1, @aktualny %>
+      <%= render ticket %>
+
+      <% if ticket.status == 'Nowy' && !@employees_tickets.exists?(ticket_id: ticket.id) %>
+
+        <% @employees_tickets.create(employee_id: ticket.employee_id, ticket_id: ticket.id) %>
+
+      <% end %>
+
+      <p>
+        <%= link_to "Show this ticket", ticket %>
+      </p>
+    
+
+  <% elsif @employee.user == current_user && ticket.employee_id == @employee.id %>
     <%= render ticket %>
     <p>
       <%= link_to "Show this ticket", ticket %>
     </p>
-  <% end %>
+    <% end %>
   <% end %>
 </div>
 
-<%= link_to "New ticket", new_ticket_path %>
+<% if cannot? :department_id_1, @aktualny %>
+  <%= link_to "New ticket", new_ticket_path %>
+<% end %>
