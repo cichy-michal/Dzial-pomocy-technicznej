@@ -7,20 +7,25 @@
 <div>
 
   <%= form_for @ticket, url: ticket_path(@ticket), method: :put do |f| %>
-  <%= f.hidden_field :status, value: 'Rozwiazywanie' %>
-  <%= f.button "Zmień status na rozwiązywanie", class: "btn btn-dark" %>
+  <%= f.hidden_field :status, value: 'W trakcie' %>
+  <%= f.button "Zmien status na: W trakcie rozwiazywania", class: "btn btn-dark" %>
   <% end %>
 
 </br>
 
   <%= form_for @ticket, url: ticket_path(@ticket), method: :put do |f| %>
   <%= f.hidden_field :status, value: 'Problem rozwiazany' %>
-  <%= f.hidden_field :employees_tickets_employee_id, value: nil %>
-  <%= f.hidden_field :employees_tickets_ticket_id, value: nil %>
   <%= f.submit "Oznacz jako rozwiązane", class: "btn btn-dark" %>
   <% end %>
+
 <hr style="margin-top: 10px; margin-bottom: 1px;" />
   <%= link_to "Pokaż zgłoszenie", @ticket , class: "btn btn-dark" %> |
   <%= link_to "Wróć do zgłoszeń", tickets_path , class: "btn btn-dark" %>
+
+<hr style="margin-top: 10px; margin-bottom: 1px;" />
+  <%= button_to 'Rozwiaz nastepne zgloszenie', unsign_ticket_path(@ticket), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-dark" %>
+
+<hr style="margin-top: 10px; margin-bottom: 1px;" />
+
 
 </div>

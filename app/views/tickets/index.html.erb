@@ -8,23 +8,10 @@
    <div class="page-divider"></div>
 
       <%= render ticket %>
-   
-      <% if ticket.status == 'Nowy' && !@employees_tickets.exists? %>
-
-        <% @employees_tickets.create(employee_id: ticket.employee_id, ticket_id: ticket.id) %>
-
-      <% end %>
-
-      <p>
-        <% link_to "Show this ticket", ticket %>
-      </p>
-    
 
   <% elsif @employee.user == current_user && ticket.employee_id == @employee.id %>
+  
     <%= render ticket %>
-    <p>
-      <% link_to "Show this ticket", ticket %>
-    </p>
     <% end %>
   <% end %>
  

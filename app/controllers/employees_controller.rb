@@ -45,7 +45,7 @@ class EmployeesController < ApplicationController
   def update
     respond_to do |format|
       if @employee.update(employee_params)
-        format.html { redirect_to employee_url(@employee), notice: "Dane zostały zedytowane poprawnie." }
+        format.html { redirect_to employee_url(@employee), notice: "Dane zostały poprawnie zaktualizowane." }
         format.json { render :show, status: :ok, location: @employee }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :tickets
+  resources :tickets do
+  member do
+    delete 'unsign'
+    end
+  end
   resources :employees
   resources :departments
   devise_for :users, controllers: { registrations: 'users/registrations' }

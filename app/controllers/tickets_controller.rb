@@ -1,30 +1,27 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: %i[ show edit update destroy]
+  before_action :set_ticket, only: %i[ show edit update destroy unsign]
   before_action :authenticate_user!
   before_action :set_current_employee
-  before_action :set_reporter, only: %i[ show edit update destroy]
-  before_action :aktualny
   before_action :set
+  before_action :aktualny
+
   # GET /tickets or /tickets.json
   def index
     @tickets = Ticket.all
     @employees_tickets = EmployeesTicket.all
   end
 
-  def aktualny
-    @aktualny = current_user.employee if current_user.present?
+  def unsign
+    unsign = EmployeesTicket.where(employee_id: @aktualny.id, ticket_id: @ticket.id)
+    if unsign.present?
+    unsign.delete_all
+    flash[:notice] = 'Przypisano nowe zgloszenie'
+    end
+    redirect_to tickets_path
   end
 
-  def set_reporter
-      # Znajdź obiekt Employee na podstawie employee_id związanego z aktualnym Ticket
-      @reporter = Employee.find_by(id: @ticket.employee_id)
-      if @reporter
-        @first_name = @reporter&.first_name
-        @last_name = @reporter&.last_name
-      else
-        @first_name = nil
-        @last_name = nil
-      end
+  def aktualny
+    @aktualny = current_user.employee if current_user.present?
   end
 
   def set_current_employee
@@ -32,8 +29,14 @@ class TicketsController < ApplicationController
     @employee = current_user.employee
   end
 
+  def set
+    @user = User.all
+    @emp = Employee.all
+  end
+
   # GET /tickets/1 or /tickets/1.json
   def show
+    @employees_tickets = EmployeesTicket.all
   end
 
   # GET /tickets/new
@@ -59,15 +62,12 @@ class TicketsController < ApplicationController
       end
     end
   end
-  def set
-    @user = User.all
-    @emp = Employee.all
-  end
+
   # PATCH/PUT /tickets/1 or /tickets/1.json
   def update
     respond_to do |format|
       if @ticket.update(ticket_params)
-        format.html { redirect_to ticket_url(@ticket), notice: "zgłoszenie zostało zaktualizowane." }
+        format.html { redirect_to ticket_url(@ticket), notice: "Zgłoszenie zostało zaktualizowane." }
         format.json { render :show, status: :ok, location: @ticket }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -27,9 +27,11 @@
     <%= form.file_field :image , style: "background-color: #343a40;color: white;", accept: 'image/png, image/gif, image/jpeg'%>
   </div>
 
+  <% if cannot? :department_id_1, @aktualny %>
   <div>
     <%= form.text_field :status, value: 'Nowy', type: :hidden %>
   </div>
+  <% end %>
 
   <div>
     <%= form.number_field :employee_id, value:@employee.id, type: :hidden %>

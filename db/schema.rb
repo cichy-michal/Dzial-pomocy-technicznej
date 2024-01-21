@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_20_200315) do
   create_table "tickets", force: :cascade do |t|
     t.string "status"
     t.text "description"
-    t.string "image"
+    t.binary "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "employee_id", null: false

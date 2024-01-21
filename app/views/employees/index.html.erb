@@ -8,12 +8,12 @@
 
       <%= render employee %>
       <p>
-        <%= button_to "Przejdź do obecnego użytkownika", employee, method: :get, class: "btn btn-dark" %>
+        <%= button_to "Pokaż dane osobowe", employee, method: :get, class: "btn btn-dark" %>
       </p>
     <% end %>
   <% end %>
 
 </div>
 <% unless @employees.any? { |employee| employee.user == current_user } %>
-  <%= button_to "Dodaj Pracownika", new_employee_path, method: :get, class: "btn btn-dark" %>
+  <%= button_to "Dodaj dane osobowe", new_employee_path, method: :get, class: "btn btn-dark" %>
 <% end %>
