@@ -1,10 +1,10 @@
-<h1>Editing department</h1>
+<h1 style="color: white;">Edytuj Dział</h1>
 
 <%= render "form", department: @department %>
 
 <br>
 
 <div>
-  <%= link_to "Show this department", @department %> |
-  <%= link_to "Back to departments", departments_path %>
+  <%= link_to "Pokaż dział", @department , class: "btn btn-dark"%> |
+  <%= link_to "Wróć do działów", departments_path, class: "btn btn-dark" %>
 </div>

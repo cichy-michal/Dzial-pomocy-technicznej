@@ -1,9 +1,9 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2 style="color: white;">Edytuj <%= resource_name.to_s.humanize %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs" style="color:white;">
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -11,25 +11,25 @@
     <% end %>
 
     <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
+                hint: "Pozostaw puste aby nie zmieniać hasła",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
+                hint: "podaj bierzące hasło",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+  <div class="form-actions" >
+    <%= f.button :submit, "Uaktualnij", style: "color: white; background-color: #343a40;"%>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 
-<%= link_to "Back", :back %>
+<div style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">Niezadowolony ? <%= button_to "Usuń moje konto" , registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete , style: "color: white; background-color: #343a40;"%></div>
+
+<%= button_to "Cofnij" , method: :get, style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;"  %>

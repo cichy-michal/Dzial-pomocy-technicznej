@@ -1,22 +1,19 @@
-
-<h1>Dane osobowe</h1>
+<h1 style="color: white;">Dane osobowe</h1>
 
 <div id="employees">
 
-
   <% @employees.each do |employee| %>
 
-  <% if employee.user == current_user %>
+    <% if employee.user == current_user %>
 
-    <%= render employee %>
-    <p>
-      <%= link_to "Show this employee", employee %>
-    </p>
+      <%= render employee %>
+      <p>
+        <%= button_to "Przejdź do obecnego użytkownika", employee, method: :get, class: "btn btn-dark" %>
+      </p>
+    <% end %>
   <% end %>
-<% end %>
 
 </div>
-
 <% unless @employees.any? { |employee| employee.user == current_user } %>
-<%= link_to "New employee", new_employee_path %>
+  <%= button_to "Dodaj Pracownika", new_employee_path, method: :get, class: "btn btn-dark" %>
 <% end %>

@@ -4,11 +4,12 @@
 <div>
 <% if can? :department_id_1, @aktualny %>
 
-  <%= link_to "Edit ticket", edit_ticket_path(@ticket) %>
+  <%= button_to "Edytuj zgłoszenie", edit_ticket_path(@ticket) , method: :get , style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;"%>
+<hr style="margin-top: 10px; margin-bottom: 1px;" />
 
-   |
 <% end %>
-  <%= link_to "Back to tickets", tickets_path %>
+  <%= button_to "Wróć do zgłoszeń (usn)", tickets_path , method: :get , style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;"%>
+<hr style="margin-top: 10px; margin-bottom: 1px;" />
 
-  <%= button_to "Destroy this ticket", @ticket, method: :delete %>
+  <%= button_to "Usuń zgłoszenie", @ticket, method: :delete, class:"btn btn-dark" %>
 </div>

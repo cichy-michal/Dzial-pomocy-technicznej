@@ -12,25 +12,25 @@
   <% end %>
 
   <div>
-    <%= form.label :first_name, style: "display: block" %>
-    <%= form.text_field :first_name %>
+    <%= form.label :Imię, style: "display: block; color: white;" %>
+    <%= form.text_field :first_name, style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;"  %>
   </div>
 
   <div>
-    <%= form.label :last_name, style: "display: block" %>
-    <%= form.text_field :last_name %>
+    <%= form.label :Nazwisko, style: "display: block; color: white;" %>
+    <%= form.text_field :last_name , style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" %>
   </div>
 
   <div>
     <%= form.number_field :user_id, id: :employee_user_id, value:current_user.id, type: :hidden %>
   </div>
 
-  <div>
-    <%= form.label :department_name, style: "display: block" %>
-    <%= form.collection_select :department_id, Department.all, :id, :department_name, prompt: "Wybierz dział" %>
+  <div style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" >
+    <%= form.label :Dział, style: "display: block; color: white;" %>
+    <%= form.collection_select :department_id, Department.all, :id, :department_name, prompt: "Wybierz dział" , style: "background-color: ##db1212;"%>
   </div></br>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Dodaj pracownika" , style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" %>
   </div>
 <% end %>

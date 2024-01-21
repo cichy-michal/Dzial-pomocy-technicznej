@@ -14,17 +14,17 @@
 
   <div>
     <% if defined? editing %>
-    <%= form.label :Dodaj_rozwiazania, style: "display: block" %>
+    <%= form.label :Dodaj_rozwiazanie, style: "display: block; color: white;" %>
     <% else %>
-    <%= form.label :description, style: "display: block" %>
+    <%= form.label :Opis, style: "display: block; color: white;" %>
     <% end %>
 
-    <%= form.text_area :description %>
+    <%= form.text_area :description, rows: 20, cols: 100 , style: "background-color: #343a40;color: white;"%>
   </div>
 
   <div>
-    <%= form.label :image, style: "display: block" %>
-    <%= form.text_field :image %>
+
+    <%= form.file_field :image , style: "background-color: #343a40;color: white;", accept: 'image/png, image/gif, image/jpeg'%>
   </div>
 
   <div>
@@ -34,9 +34,10 @@
   <div>
     <%= form.number_field :employee_id, value:@employee.id, type: :hidden %>
   </div>
-
+<hr style="margin-top: 10px; margin-bottom: 1px;" />
   <div>
-    <%= form.submit %>
+    <%= form.submit "Aktualizuj zgłoszenie"  , class: "btn btn-dark"%>
+     
   </div>
   
 <% end %>

@@ -11,12 +11,13 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :department_name, style: "display: block" %>
-    <%= form.text_field :department_name %>
+  <div style="color: white;">
+    <%= form.label :"Podaj nazwę nowego działu", style: "display: block" %>
+    <%= form.text_field :department_name,  style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" %>
+<hr style="margin-top: 1px; margin-bottom: 1px;" />
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Utwórz", style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" %>
   </div>
 <% end %>
