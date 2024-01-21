@@ -30,7 +30,7 @@ class EmployeesTest < ApplicationSystemTestCase
     fill_in "Last name", with: @employee.last_name
     click_on "Update Employee"
 
-    assert_text "Employee was successfully updated"
+    assert_text "Dane zostały zaktualizowane"
     click_on "Back"
   end
 

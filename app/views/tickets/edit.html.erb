@@ -8,7 +8,7 @@
 
   <%= form_for @ticket, url: ticket_path(@ticket), method: :put do |f| %>
   <%= f.hidden_field :status, value: 'Rozwiazywanie' %>
-  <%= f.button "Zmien status na rozwiazywanie", class: "btn btn-dark" %>
+  <%= f.button "Zmień status na rozwiązywanie", class: "btn btn-dark" %>
   <% end %>
 
 </br>
@@ -20,7 +20,7 @@
   <%= f.submit "Oznacz jako rozwiązane", class: "btn btn-dark" %>
   <% end %>
 <hr style="margin-top: 10px; margin-bottom: 1px;" />
-  <%= link_to "Pokaz zgloszenie", @ticket , class: "btn btn-dark" %> |
-  <%= link_to "Wroc do zgloszen", tickets_path , class: "btn btn-dark" %>
+  <%= link_to "Pokaż zgłoszenie", @ticket , class: "btn btn-dark" %> |
+  <%= link_to "Wróć do zgłoszeń", tickets_path , class: "btn btn-dark" %>
 
 </div>

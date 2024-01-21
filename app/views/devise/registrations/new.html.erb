@@ -10,7 +10,7 @@
                 input_html: { autocomplete: "email" }%>
     <%= f.input :password,
                 required: true,
-                hint: ("Hasło usi zawierać minimum #{@minimum_password_length} znaków" if @minimum_password_length),
+                hint: ("Hasło musi zawierać minimum #{@minimum_password_length} znaków" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 required: true,

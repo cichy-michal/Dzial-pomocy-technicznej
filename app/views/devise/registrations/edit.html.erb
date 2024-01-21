@@ -1,4 +1,4 @@
-<h2 style="color: white;">Edytuj <%= resource_name.to_s.humanize %></h2>
+<h2 style="color: white;">Edytuj Profil <% resource_name.to_s.humanize %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -18,7 +18,7 @@
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password,
-                hint: "podaj bierzące hasło",
+                hint: "Podaj bieżące hasło",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
   </div>
@@ -31,5 +31,6 @@
 
 
 <div style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">Niezadowolony ? <%= button_to "Usuń moje konto" , registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete , style: "color: white; background-color: #343a40;"%></div>
+<hr style="margin-top: 10px; margin-bottom: px;" />
 
 <%= button_to "Cofnij" , method: :get, style: "background-color: #343a40; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;"  %>
