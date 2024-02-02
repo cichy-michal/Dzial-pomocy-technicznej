@@ -1,5 +1,25 @@
 <h1 style="color: white;">Edytowanie zgłoszenia</h1>
 
+<% if can? :department_id_1, @aktualny %>
+
+<hr style="margin-top: 10px; margin-bottom: 1px;" />
+
+<hr style="margin-top: 10px; margin-bottom: 1px;" />
+
+<%= form_for @ticket, url: ticket_path(@ticket), method: :put do |f| %>
+
+  <div style="color: white",>Dodaj rozwiązanie</div>
+
+  <hr style="margin-top: 10px; margin-bottom: 1px;" />
+  <%= f.text_area :description, rows: 20, cols: 100,  style: "background-color: #343a40;color: white;" %>
+
+  <hr style="margin-top: 10px; margin-bottom: 1px;" />
+  <%= f.button "Dodaj rozwiazanie", class: "btn btn-dark" %>
+  <% end %>
+
+<hr style="margin-top: 10px; margin-bottom: 1px;" />
+<% end %>
+
 <%= render "form", editing: true, ticket: @ticket %>
 
 <br>
@@ -10,6 +30,7 @@
   <%= f.hidden_field :status, value: 'W trakcie' %>
   <%= f.button "Zmien status na: W trakcie rozwiazywania", class: "btn btn-dark" %>
   <% end %>
+
 
 </br>
 

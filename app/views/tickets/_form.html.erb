@@ -13,11 +13,7 @@
 
 
   <div>
-    <% if defined? editing %>
-    <%= form.label :Dodaj_rozwiazanie, style: "display: block; color: white;" %>
-    <% else %>
     <%= form.label :Opis, style: "display: block; color: white;" %>
-    <% end %>
 
     <%= form.text_area :description, rows: 20, cols: 100 , style: "background-color: #343a40;color: white;"%>
   </div>
@@ -37,9 +33,11 @@
     <%= form.number_field :employee_id, value:@employee.id, type: :hidden %>
   </div>
 <hr style="margin-top: 10px; margin-bottom: 1px;" />
+
+  <% if cannot? :department_id_1, @aktualny %>
   <div>
     <%= form.submit "Aktualizuj zgłoszenie"  , class: "btn btn-dark"%>
-     
   </div>
+  <% end %>
   
 <% end %>
